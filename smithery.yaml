@@ -1,0 +1,21 @@
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    properties:
+      geopluginApiKey:
+        type: string
+        description: You can generate an API key in your Geoplugin profile.
+  commandFunction:
+    # A function that produces the CLI command to start the MCP on stdio.
+    |-
+    (config) => ({
+      "command": "node",
+      "args": [
+        "build/index.js"
+      ],
+      "env": {
+        GEOPLUGIN_API_KEY: config.geopluginApiKey,
+      }
+    })

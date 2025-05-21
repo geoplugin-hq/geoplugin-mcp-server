@@ -1,0 +1,39 @@
+{
+    "name": "@geoplugin/geoplugin-mcp-server",
+    "version": "0.1.0",
+    "description": "MCP server for interacting with Geoplugin API",
+    "license": "MIT",
+    "author": "Geoplugin",
+    "repository": "github:geoplugin-hq/geoplugin-mcp-server",
+    "homepage": "https://geoplugin.com",
+    "engines": {
+        "node": ">=18"
+    },
+    "type": "module",
+    "bin": {
+        "mcp-server-geoplugin": "build/index.js"
+    },
+    "files": [
+        "build"
+    ],
+    "scripts": {
+        "test": "jest --runInBand --forceExit --verbose false",
+        "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+        "prepare": "npm run build",
+        "watch": "tsc --watch",
+        "inspector": "npx @modelcontextprotocol/inspector build/index.js"
+    },
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.6.1",
+        "zod": "^3.24.2"
+    },
+    "devDependencies": {
+        "@jest/globals": "^29.7.0",
+        "@types/node": "^22.13.10",
+        "jest": "^29.7.0",
+        "jest-fetch-mock": "^3.0.3",
+        "ts-jest": "^29.2.6",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.2"
+    }
+}
